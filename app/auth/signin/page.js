@@ -4,7 +4,7 @@ import { useState, Suspense } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import Layout from '../../components/layout/Layout';
+import Layout from '../../layout';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 

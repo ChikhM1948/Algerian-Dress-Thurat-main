@@ -8,7 +8,7 @@ import { connectToDatabase } from '../../../lib/db/mongodb';
 import User from '../../../lib/db/models/User';
 
 /** @type {import('next-auth').AuthOptions} */
-export const authOptions = {
+const authOptions = {
   providers: [
     // Email/Password authentication
     CredentialsProvider({

@@ -96,10 +96,10 @@ export default function SignUp() {
           <div className="max-w-md mx-auto">
             <div className="text-center mb-8">
               <h1 className="text-3xl font-extrabold text-slate-900 mb-2">
-                Create an Account
+                Créer un compte
               </h1>
               <p className="text-slate-900">
-                Join the Language Analysis Platform
+                Rejoignez-nous pour une expérience exceptionele
               </p>
             </div>
             
@@ -107,7 +107,7 @@ export default function SignUp() {
               <div className="bg-gradient-to-r from-indigo-700 to-blue-700 px-6 py-4 -mx-5 -mt-5 mb-6">
                 <h2 className="text-xl font-bold text-white">Sign Up</h2>
                 <p className="text-blue-100 text-sm mt-1">
-                  Create your account to get started
+                  Créer un compte pour comencer
                 </p>
               </div>
               
@@ -125,7 +125,7 @@ export default function SignUp() {
               <form onSubmit={handleSubmit} className="mb-6">
                 <div className="mb-4">
                   <label htmlFor="name" className="block text-sm font-medium text-slate-900 mb-1">
-                    Full Name
+                   Nom & prénom
                   </label>
                   <input
                     id="name"
@@ -142,7 +142,7 @@ export default function SignUp() {
                 
                 <div className="mb-4">
                   <label htmlFor="email" className="block text-sm font-medium text-slate-900 mb-1">
-                    Email Address
+                    Email 
                   </label>
                   <input
                     id="email"
@@ -159,7 +159,7 @@ export default function SignUp() {
                 
                 <div className="mb-4">
                   <label htmlFor="password" className="block text-sm font-medium text-slate-900 mb-1">
-                    Password
+                    Mot de passe
                   </label>
                   <input
                     id="password"
@@ -179,7 +179,7 @@ export default function SignUp() {
                 
                 <div className="mb-6">
                   <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-900 mb-1">
-                    Confirm Password
+                    Confirmer mot de passe
                   </label>
                   <input
                     id="confirmPassword"
@@ -199,7 +199,7 @@ export default function SignUp() {
                   loading={isLoading}
                   className="w-full py-2.5"
                 >
-                  Create Account
+                  Créer un compte 
                 </Button>
               </form>
               
@@ -208,34 +208,17 @@ export default function SignUp() {
                   <div className="w-full border-t border-gray-300"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-slate-500">Or continue with</span>
                 </div>
               </div>
               
               {/* OAuth Providers */}
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <button
-                  onClick={() => handleOAuthSignIn('google')}
-                  disabled={isLoading}
-                  className="flex items-center justify-center py-2.5 px-4 border border-slate-300 rounded-lg shadow-sm bg-white hover:bg-slate-50 transition-colors"
-                >
-                  <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
-                    <path
-                      d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"
-                      fill="#4285F4"
-                    />
-                  </svg>
-                  Google
-                </button>
-                
               
-              </div>
               
               {/* Sign In Link */}
               <div className="text-center text-sm">
-                <span className="text-slate-800">Already have an account?</span>{' '}
+                <span className="text-slate-800">Vous avez déja un compte ?</span>{' '}
                 <Link href="/auth/signin" className="font-medium text-blue-600 hover:text-blue-500">
-                  Sign in
+                  Connectez-vous
                 </Link>
               </div>
             </Card>

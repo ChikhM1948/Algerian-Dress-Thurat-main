@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import Layout from '../../components/layout/Layout';
 import Card from '../../components/ui/Card';
 
 export default function SignOut() {

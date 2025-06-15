@@ -1,4 +1,3 @@
-//@ts-nocheck
 // app/api/auth/[...nextauth]/route.js
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -6,35 +5,37 @@ import GoogleProvider from 'next-auth/providers/google';
 import GithubProvider from 'next-auth/providers/github';
 import { connectToDatabase } from '../../../lib/db/mongodb';
 import User from '../../../lib/db/models/User';
+import bcrypt from 'bcryptjs';
 
 /** @type {import('next-auth').AuthOptions} */
 export const authOptions = {
   providers: [
     // Email/Password authentication
     CredentialsProvider({
-      name: 'Credentials',
+      name: 'credentials',
       credentials: {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        if (!credentials) return null;
+        if (!credentials?.email || !credentials?.password) {
+          return null;
+        }
         
         try {
           await connectToDatabase();
           
-          // Find user by email - use exec() to return a proper Promise
+          // Find user by email
           const user = await User.findOne({ 
             email: credentials.email 
-          }).select('+password').exec();
+          }).select('+password');
           
-          // If no user found, return null
           if (!user) {
             return null;
           }
           
           // Check if password matches
-          const isMatch = await user.comparePassword(credentials.password);
+          const isMatch = await bcrypt.compare(credentials.password, user.password);
           if (!isMatch) {
             return null;
           }
@@ -45,7 +46,7 @@ export const authOptions = {
             name: user.name,
             email: user.email,
             image: user.image,
-            role: user.role,
+            role: user.role || 'user',
           };
         } catch (error) {
           console.error('Auth error:', error);
@@ -56,14 +57,14 @@ export const authOptions = {
     
     // Google OAuth provider
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      clientId: process.env.GOOGLE_CLIENT_ID || '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
     }),
     
     // GitHub OAuth provider
     GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      clientId: process.env.GITHUB_CLIENT_ID || '',
+      clientSecret: process.env.GITHUB_CLIENT_SECRET || '',
     }),
   ],
   
@@ -78,7 +79,7 @@ export const authOptions = {
     async jwt({ token, user, account }) {
       if (user) {
         token.id = user.id;
-        token.role = user.role;
+        token.role = user.role || 'user';
       }
       if (account) {
         token.provider = account.provider;
@@ -88,7 +89,7 @@ export const authOptions = {
     
     // Add user info to session
     async session({ session, token }) {
-      if (session.user) {
+      if (session.user && token) {
         session.user.id = token.id;
         session.user.role = token.role;
       }
@@ -97,7 +98,7 @@ export const authOptions = {
     
     // Handle OAuth signins
     async signIn({ user, account, profile }) {
-      if (!account || !user || !user.email) return false;
+      if (!account || !user?.email) return false;
       
       if (account.provider === 'credentials') {
         return true;
@@ -107,27 +108,49 @@ export const authOptions = {
       try {
         await connectToDatabase();
         
-        // Check if user exists - use exec() to return a proper Promise
-        const dbUser = await User.findOne({ 
+        // Check if user exists
+        let dbUser = await User.findOne({ 
           email: user.email 
-        }).exec();
+        });
         
         if (!dbUser) {
           // Create new user if doesn't exist
-          await User.create({
+          dbUser = await User.create({
             name: user.name || profile?.name || profile?.login || 'User',
             email: user.email,
-            image: user.image || null,
+            image: user.image || profile?.avatar_url || null,
             provider: account.provider,
             providerId: account.providerAccountId,
+            role: 'user',
           });
-        } else if (dbUser.provider !== account.provider) {
-          // Update provider if user exists but used a different provider
-          dbUser.provider = account.provider;
-          dbUser.providerId = account.providerAccountId;
-          dbUser.image = user.image || dbUser.image;
-          await dbUser.save();
+        } else {
+          // Update user info if needed
+          let needsUpdate = false;
+          
+          if (dbUser.provider !== account.provider) {
+            dbUser.provider = account.provider;
+            dbUser.providerId = account.providerAccountId;
+            needsUpdate = true;
+          }
+          
+          if (user.image && dbUser.image !== user.image) {
+            dbUser.image = user.image;
+            needsUpdate = true;
+          }
+          
+          if (user.name && dbUser.name !== user.name) {
+            dbUser.name = user.name;
+            needsUpdate = true;
+          }
+          
+          if (needsUpdate) {
+            await dbUser.save();
+          }
         }
+        
+        // Update user object with database info
+        user.id = dbUser._id.toString();
+        user.role = dbUser.role;
         
         return true;
       } catch (error) {
@@ -146,6 +169,9 @@ export const authOptions = {
   
   // Enable debug in development
   debug: process.env.NODE_ENV === 'development',
+  
+  // Add secret
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 // Use the NextAuth handler

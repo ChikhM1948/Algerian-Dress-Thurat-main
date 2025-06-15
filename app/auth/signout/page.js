@@ -3,26 +3,62 @@
 import { useState, useEffect } from 'react';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import Card from '../../components/ui/Card';
+import dynamic from 'next/dynamic';
+
+// Dynamically import Layout to avoid SSR issues
+const Layout = dynamic(() => import('../../components/layout/Layout'), {
+  ssr: false,
+  loading: () => <div>Loading...</div>
+});
+
+// Dynamically import Card to avoid SSR issues
+const Card = dynamic(() => import('../../components/ui/Card'), {
+  ssr: false,
+  loading: () => <div className="p-6 bg-white rounded-lg shadow-lg">Loading...</div>
+});
 
 export default function SignOut() {
   const router = useRouter();
   const [isSigningOut, setIsSigningOut] = useState(false);
+  const [mounted, setMounted] = useState(false);
   
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
     // Automatically redirect after a short delay
     const timer = setTimeout(() => {
       router.push('/');
     }, 3000);
     
     return () => clearTimeout(timer);
-  }, [router]);
+  }, [router, mounted]);
   
   const handleSignOut = async () => {
     setIsSigningOut(true);
-    await signOut({ redirect: false });
-    router.push('/');
+    try {
+      await signOut({ redirect: false });
+      router.push('/');
+    } catch (error) {
+      console.error('Sign out error:', error);
+      setIsSigningOut(false);
+    }
   };
+
+  // Don't render until mounted on client
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-2 text-slate-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <Layout>
@@ -39,7 +75,7 @@ export default function SignOut() {
               
               <div className="flex flex-col items-center justify-center mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013 3v1" />
                 </svg>
                 
                 <h3 className="text-xl font-semibold text-slate-900 mb-2">

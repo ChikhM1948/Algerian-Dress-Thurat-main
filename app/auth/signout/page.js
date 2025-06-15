@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 
 // Dynamically import Layout to avoid SSR issues
-const Layout = dynamic(() => import('../../components/layout/Layout'), {
+const Layout = dynamic(() => import('../../layout'), {
   ssr: false,
   loading: () => <div>Loading...</div>
 });

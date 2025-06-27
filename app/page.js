@@ -12,9 +12,7 @@ import Wishlist from "../app/components/Wishlist";
 import OrderForm from "../app/components/OrderForm";
 
 const products = [
-  { id: 1, name: "Djebba AL-Chattar", region: "Constantine", price: "3500 Da", description: "Elegant Algerian Kaftan with gold embroidery.", image: "/chattar.jpg" },
   { id: 2, name: "Caftan El Kadi", region: "Constantine", price: "8000 Da", description: "Caftan du juge, une tenue traditionnelle de Constantine.", image: "/caftankadi.jpg" },
-  { id: 3, name: "Gandoura Medjboud", region: "Constantine", price: "7000 Da", description: "Vêtement traditionnel constantinois brodé au fil d'or.", image: "/images.jpeg" },
   { id: 4, name: "Caftan El Bey", region: "Constantine", price: "9000 Da", description: "Vêtement traditionnel remontant à la Régence d'Alger.", image: "/caftanbey.jpeg" },
   { id: 5, name: "Lafa Anabia", region: "Annaba", price: "10000 Da", description: "Tenue traditionnelle emblématique d'Annaba.", image: "/lafaanabia.jpeg" },
   { id: 6, name: "Dlala Anabia", region: "Annaba", price: "10000 Da", description: "Tenue nuptiale traditionnelle d'Annaba.", image: "/dlala.jpeg" },
@@ -28,8 +26,28 @@ const products = [
   { id: 14, name: "La Taqendurt ", region: "Béjaïa", price: "7000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/taqendurt.jpg" },
   { id: 15, name: "Le Caftan El Mansouriya  ", region: "Tlemcen", price: "9000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/elmansoriya.jpg" },
   { id: 16, name: "Mlahfa Chaouïa", region: "Batna", price: "8000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/malhfa.jpg" },
-  { id: 17, name: "Caftan El Koronfla    ", region: "Anaba", price: "11000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/caftankronfla.jpg"}
-
+  { id: 17, name: "Caftan El Koronfla    ", region: "Anaba", price: "11000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/caftankronfla.jpg"},
+  { id: 18, name: "Modma", nameAr: "مضمة", nameFr: "Ceinture Mdamma", region: "Nord Constantinois", price: "3000 Da", description: "Accessoire traditionnel porté autour de la taille.", image: "/modma.jpg" },
+  { id: 19, name: "Khit er-Rouh", nameAr: "خيط الروح", nameFr: "Fil de l’âme", region: "Alger", price: "2500 Da", description: "Bijou raffiné utilisé dans les parures traditionnelles.", image: "/khaytroh.jpg" },
+  { id: 20, name: "Erredif", nameAr: "الرديف", nameFr: "Ceinture Erredif", region: "Tlemcen", price: "4000 Da", description: "Pièce vestimentaire richement ornée, portée lors des fêtes.", image: "/rdaif.jpg" },
+  { id: 21, name: "Chachia Tasa", nameAr: "شاشية الطاسة", nameFr: "Chéchia Tassa", region: "Constantine", price: "2000 Da", description: "Coiffe traditionnelle en feutre portée par les hommes.", image: "/chachiatassa.jpg" },
+  { id: 22, name: "Chachia Sultani", nameAr: "شاشية سلطاني", nameFr: "Chéchia Sultani", region: "Tlemcen", price: "2200 Da", description: "Chéchia luxueuse, symbole de noblesse et d'élégance.", image: "/chachiasoltani.jpg" },
+  { id: 23, name: "Jazeroun", nameAr: "الجازرون", nameFr: "Collier Djazroun", region: "Annaba", price: "1500 Da", description: "Accessoire en perles ou ambre, souvent porté au cou.", image: "/jazeroun.jpg" },
+  { id: 24, name: "Skhab El Anbar", nameAr: "سخاب العنبر", nameFr: "Collier d'ambre", region: "Alger", price: "3500 Da", description: "Collier parfumé fait d’ambre traditionnel algérien.", image: "/skhabamber.jpg" },
+  { id: 25, name: "Rraâach", nameAr: "الرعاعش", nameFr: "Boucles d’oreilles Rraâch", region: "Constantine", price: "1200 Da", description: "Bijoux d’oreilles ou décorations de tête traditionnelles.", image: "/rraach.jpg" },
+  { id: 26, name: "Chantouf", nameAr: "شنتوف", nameFr: "Coiffe Chantouf", region: "Oran", price: "1800 Da", description: "Coiffure traditionnelle portée lors des cérémonies.", image: "/chantouf.jpg" },
+  { id: 28, name: "Abrouq", nameAr: "العبروق", nameFr: "Accessoire de hanche Abrouq", region: "Biskra", price: "1700 Da", description: "Bijou ou accessoire de hanche porté dans le sud algérien.", image: "/abrouk.jpg" },
+  { id: 29, name: "Nwachat", nameAr: "النواشات", nameFr: "Ornements Nwachat", region: "Ghardaïa", price: "1900 Da", description: "Accessoire féminin délicat porté sur la tête ou le buste.", image: "/nwachat.jpg" },
+  { id: 30, name: "Khenaq", nameAr: "الخناق", nameFr: "Collier ras-du-cou Khenaq", region: "Alger", price: "3000 Da", description: "Collier ras-du-cou en perles ou tissu richement décoré.", image: "/khenak.jpg" },
+  { id: 31, name: "Fouta", nameAr: "فوطة", nameFr: "Fouta", region: "Mostaganem", price: "2000 Da", description: "Pièce d’étoffe traditionnelle portée à la taille ou l’épaule.", image: "/fouta.jpg" },
+  { id: 32, name: "Blouza Brokar", nameAr: "بلوزة بروكار", nameFr: "Blouza en brocart", region: "Oran", price: "10000 Da", description: "Blouza fabriquée avec du tissu brocart luxueux.", image: "/blouzabrokar.jpg" },
+  { id: 33, name: "Blouza El Aqiq", nameAr: "بلوزة العقيق", nameFr: "Blouza en agate", region: "Oran", price: "11000 Da", description: "Blouza oranaise ornée de pierres précieuses (agates).", image: "/blouzaaqiq.jpg" },
+  { id: 34, name: "Blouza El Waqr", nameAr: "بلوزة الوقر", nameFr: "Blouza El Waqr", region: "Oran", price: "10500 Da", description: "Blouza oranaise portée avec élégance lors des fêtes.", image: "/blouzawakr.jpg" },
+  { id: 35, name: "Blouza Dentelle", nameAr: "بلوزة الدونتيل", nameFr: "Blouza en dentelle", region: "Oran", price: "11500 Da", description: "Blouza moderne confectionnée avec du tissu dentelle.", image: "/blouzadentelle.jpg" },
+  { id: 36, name: "Blouza Ezzaïm", nameAr: "بلوزة الزعيم", nameFr: "Blouza Ezzaïm", region: "Oran", price: "12000 Da", description: "Modèle distinctif de blouza, populaire à Oran.", image: "/blouzazaim.jpg" },
+  { id: 37, name: "Baouza Sidi Boumediene", nameAr: "باوزة سيدي بومدين", nameFr: "Baouza de Sidi Boumediene", region: "Tlemcen", price: "9500 Da", description: "Tenue traditionnelle en hommage à Sidi Boumediene.", image: "/baouzasidiboumediene.jpg" },
+  { id: 38, name: "Hayek Achaâchi", nameAr: "حايك العشعاشي", nameFr: "Haïk Achaâchi", region: "Skikda", price: "8000 Da", description: "Haïk traditionnel typique de la région de Skikda.", image: "/hayekachacha.jpg" },
+  { id: 39, name: "Hayek El Mermma", nameAr: "حايك المرمة", nameFr: "Haïk El Mermma", region: "Alger", price: "8500 Da", description: "Haïk en soie fine avec broderie spécifique à Alger.", image: "/hayekmorma.jpg" }
 
 
 ];

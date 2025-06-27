@@ -109,6 +109,11 @@ const Navbar = ({
               <Link href="/about" className="hover:text-[#D8315B] font-medium transition duration-300 border-b-2 border-transparent hover:border-[#D8315B]">
                 À Propos
               </Link>
+
+              <Link href="/dialectal" className="hover:text-[#D8315B] font-medium transition duration-300 border-b-2 border-transparent hover:border-[#D8315B]">
+                Origine
+              </Link>
+
               <Link href="/contact" className="hover:text-[#D8315B] font-medium transition duration-300 border-b-2 border-transparent hover:border-[#D8315B]">
                 Contactez-nous
               </Link>
@@ -293,6 +298,15 @@ const Navbar = ({
               >
                 À Propos
               </Link>
+
+              <Link 
+                href="/dialectal" 
+                className="block py-3 px-4 text-lg font-medium text-[#333333] hover:text-[#D8315B] hover:bg-[#FFF0F3] rounded-lg transition duration-300"
+                onClick={closeMobileMenu}
+              >
+                Origine
+              </Link>
+
               <Link 
                 href="/contact" 
                 className="block py-3 px-4 text-lg font-medium text-[#333333] hover:text-[#D8315B] hover:bg-[#FFF0F3] rounded-lg transition duration-300"

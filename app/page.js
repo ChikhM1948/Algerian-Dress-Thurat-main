@@ -17,11 +17,10 @@ const products = [
   { id: 5, name: "Lafa Anabia", region: "Annaba", price: "10000 Da", description: "Tenue traditionnelle emblématique d'Annaba.", image: "/lafaanabia.jpeg" },
   { id: 6, name: "Dlala Anabia", region: "Annaba", price: "10000 Da", description: "Tenue nuptiale traditionnelle d'Annaba.", image: "/dlala.jpeg" },
   { id: 7, name: "Gandoura Cocktail", region: "Annaba", price: "10000 Da", description: "Version moderne et festive de la gandoura traditionnelle.", image: "/kandouracok.jpeg" },
-  { id: 8, name: "Gandoura Karanfla", region: "Annaba", price: "10000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/karanfla.jpeg" },
   { id: 9, name: "Blouza Wahrania ", region: "Oran", price: "12000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/blouza.jpg" },
   { id: 10, name: "Chedda Tlemcenienne ", region: "Tlemcen", price: "18000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/tlemcenienne.jpg" },
   { id: 11, name: "Karakou Algérois ", region: "Alger", price: "11000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/karakoualger.jpg" },
-  { id: 12, name: "Ghlila ", region: "Alger", price: "10000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/ghlila.jpg" },
+  { id: 12, name: "Gandoura El-madjboud  ", region: "Alger", price: "10000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/ghlila.jpg" },
   { id: 13, name: "Le Fergani Constantinois  ", region: "Constantine", price: "13000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/fergani.jpg" },
   { id: 14, name: "La Taqendurt ", region: "Béjaïa", price: "7000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/taqendurt.jpg" },
   { id: 15, name: "Le Caftan El Mansouriya  ", region: "Tlemcen", price: "9000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/elmansoriya.jpg" },
@@ -48,7 +47,7 @@ const products = [
   { id: 37, name: "Baouza Sidi Boumediene", nameAr: "باوزة سيدي بومدين", nameFr: "Baouza de Sidi Boumediene", region: "Tlemcen", price: "9500 Da", description: "Tenue traditionnelle en hommage à Sidi Boumediene.", image: "/baouzasidiboumediene.jpg" },
   { id: 38, name: "Hayek Achaâchi", nameAr: "حايك العشعاشي", nameFr: "Haïk Achaâchi", region: "Skikda", price: "8000 Da", description: "Haïk traditionnel typique de la région de Skikda.", image: "/hayekachacha.jpg" },
   { id: 39, name: "Hayek El Mermma", nameAr: "حايك المرمة", nameFr: "Haïk El Mermma", region: "Alger", price: "8500 Da", description: "Haïk en soie fine avec broderie spécifique à Alger.", image: "/hayekmorma.jpg" }
-
+  
 
 ];
 

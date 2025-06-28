@@ -155,12 +155,11 @@ export default function DialectalPage() {
       {/* Header Section */}
       <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-16 px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">
+          <h1 className="text-4xl md:text-4xl font-bold mb-4 drop-shadow-lg">
             📜 التراث الجزائري
           </h1>
           <p className="text-xl md:text-2xl opacity-90 font-light">
-            Mots Dialectaux Algériens • Algerian Dialectal Words
-          </p>
+              richesse du dialecte algerien          </p>
           <div className="mt-8 max-w-2xl mx-auto">
             <div className="relative">
               <input

@@ -21,7 +21,7 @@ const products = [
   { id: 10, name: "Chedda Tlemcenienne ", region: "Tlemcen", price: "18000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/tlemcenienne.jpg" },
   { id: 11, name: "Karakou Algérois ", region: "Alger", price: "11000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/karakoualger.jpg" },
   { id: 12, name: "Gandoura El-madjboud  ", region: "Alger", price: "10000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/ghlila.jpg" },
-  { id: 13, name: "Le Fergani Constantinois  ", region: "Constantine", price: "13000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/fergani.jpg" },
+  { id: 13, name: "Tegrifa  ", region: "Constantine", price: "13000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/fergani.jpg" },
   { id: 14, name: "La Taqendurt ", region: "Béjaïa", price: "7000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/taqendurt.jpg" },
   { id: 15, name: "Le Caftan El Mansouriya  ", region: "Tlemcen", price: "9000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/elmansoriya.jpg" },
   { id: 16, name: "Mlahfa Chaouïa", region: "Batna", price: "8000 Da", description: "Tunique ample, portée en Afrique du Nord.", image: "/malhfa.jpg" },
